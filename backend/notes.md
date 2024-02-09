@@ -1,1 +1,1 @@
-The "backend" folder root directory is "a container for your project. Its name doesn’t matter to Django; you can rename it to anything you like."
+The "backend" folder root directory is "a container for your project. Its name doesn’t matter to Django; you can rename it to anything you like.
