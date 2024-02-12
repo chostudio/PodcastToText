@@ -17,14 +17,14 @@ function TextOutputComponent() {
       <div>
         {/* <CopyToClipboard onCopy={() => setClipboardState(true)}> */}
 
-          <textarea className='block bg-white text-black rounded form-control'
+          <textarea className='mb-2 block bg-white text-black rounded form-control'
           value={clipboardState}
           onChange={(e)=>setClipboardState(e.target.value)}
             name="postContent"
             rows={20}
             cols={100}
         />
-        <button onClick={handleCopy}>Copy</button>
+        <button className='mt-2' onClick={handleCopy}>Copy</button>
         {/* </CopyToClipboard> */}
       </div>
       {/* id={data} */}
