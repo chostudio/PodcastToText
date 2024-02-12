@@ -1,20 +1,34 @@
+import { useState } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 function TextOutputComponent() {
-  const data = 1;
-  // make a variable forthe rows and col width or use css for responsive
+  const [clipboardState, setClipboardState] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(clipboardState)
+  }
   return (
+    // htmlFor = { data }
     <div>
-      <label htmlFor={data} className='block'>
+      <label className='block'>
         <h5 className="bold m-2 pt-3">Output:</h5>
 
       </label>
       <br />
-      <textarea className='block bg-white text-black rounded form-control'
-        id={data}
-        name="postContent"
-        rows={20}
-        cols={100}
-      />
+      <div>
+        {/* <CopyToClipboard onCopy={() => setClipboardState(true)}> */}
+
+          <textarea className='block bg-white text-black rounded form-control'
+          value={clipboardState}
+          onChange={(e)=>setClipboardState(e.target.value)}
+            name="postContent"
+            rows={20}
+            cols={100}
+        />
+        <button onClick={handleCopy}>Copy</button>
+        {/* </CopyToClipboard> */}
+      </div>
+      {/* id={data} */}
     </div>
 
   );

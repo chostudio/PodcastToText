@@ -20,7 +20,7 @@ function App() {
           <h1 className='text-center pt-5 mt-5 font-weight-bold'>PodcastToText</h1>
           <p className='text-center' >Get free transcription for subtitles.</p>
           <p className='text-center my-5'>Upload an mp3 file below or paste in a YouTube or Spotify link.</p>
-          
+
           <form className='align-items-center' onSubmit={handleSubmit(onSubmit)}>
             <input className='form-control inline w-40 m-2 mt-5'{...register('value_name')} type='file' name='audio' />
             <button className='m-2 inline btn btn-primary'>Submit</button>
