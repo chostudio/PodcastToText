@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 function TextOutputComponent() {
   const [clipboardState, setClipboardState] = useState(false);
