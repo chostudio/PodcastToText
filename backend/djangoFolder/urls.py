@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import MP3FileUploadView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+]
+
+urlpatterns = [
+    path('api/upload/', MP3FileUploadView.as_view(), name='mp3_file_upload'),
 ]

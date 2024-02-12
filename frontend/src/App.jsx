@@ -1,16 +1,36 @@
-import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 import TextOutputComponent from './TextOutputComponent.jsx';
 import Footer from './Footer.jsx';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
+import axios from 'axios';
 
-function App() {
+function App () {
 
-  const { register, handleSubmit } = useForm()
+  const [file, setFile] = useState(null);
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('mp3File', file);
+
+    try {
+      await axios.post('http://your-backend-url/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log('File uploaded successfully');
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  };
+
   return (
     <div className='container'>
       <div className="row">
@@ -21,12 +41,11 @@ function App() {
           <p className='text-center' >Get free transcription for subtitles.</p>
           <p className='text-center my-5'>Upload an mp3 file below or paste in a YouTube or Spotify link.</p>
 
-          <form className='align-items-center' onSubmit={handleSubmit(onSubmit)}>
-            <input className='form-control inline w-40 m-2 mt-5'{...register('value_name')} type='file' name='audio' />
-            <button className='m-2 inline btn btn-primary'>Submit</button>
+          <form className='align-items-center' onSubmit={handleSubmit}>
+            <input className='form-control inline w-40 m-2 mt-5' type='file' name='audio' onChange={handleFileChange} />
+            <button type="submit" className='m-2 inline btn btn-primary'>Submit</button>
           </form>
           < TextOutputComponent />
-
 
           <br />
           <br />

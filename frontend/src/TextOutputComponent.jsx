@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 function TextOutputComponent() {
-  const [clipboardState, setClipboardState] = useState(false);
+  const [clipboardState, setClipboardState] = useState(null);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(clipboardState)
