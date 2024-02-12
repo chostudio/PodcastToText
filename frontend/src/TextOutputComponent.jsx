@@ -5,10 +5,11 @@ function TextOutputComponent() {
   return (
     <div>
       <label htmlFor={data} className='block'>
-        Output:
+        <h5 className="bold m-2 pt-3">Output:</h5>
+
       </label>
       <br />
-      <textarea className='block'
+      <textarea className='block bg-white text-black rounded form-control'
         id={data}
         name="postContent"
         rows={20}
