@@ -1,18 +1,22 @@
-import { useForm } from 'react-hook-form';
 
-function App() {
-
-  const { register, handleSubmit } = useForm()
-
-  const onSubmit = (data) => {
-    console.log(data)
-  };
+function TextOutputComponent() {
+  const data = 1;
+  // make a variable forthe rows and col width or use css for responsive
   return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register('value_name')} type='file' name='audio' />
-          <button>Submit</button>
-        </form>
+    <div>
+      <label htmlFor={data} className='block'>
+        Output:
+      </label>
+      <br />
+      <textarea className='block'
+        id={data}
+        name="postContent"
+        rows={20}
+        cols={100}
+      />
+    </div>
+
   );
 }
 
-export default App;
+export default TextOutputComponent;
