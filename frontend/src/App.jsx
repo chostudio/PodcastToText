@@ -39,7 +39,7 @@ function App() {
           {/* put like a icon of a microphone to arrow to text drawing here */}
           <h1 className='text-center pt-5 mt-5 font-weight-bold'>PodcastToText</h1>
           <p className='text-center' >Get free transcription for subtitles.</p>
-          <p className='text-center my-5'>Upload an mp3 file below or paste in a YouTube or Spotify link.</p>
+          <p className='text-center my-3'>Upload an mp3 file below or paste in a YouTube or Spotify link.</p>
 
           {/* need error handling so that only mp3 files are allowed */}
           <form className='align-items-center' onSubmit={handleSubmit}>

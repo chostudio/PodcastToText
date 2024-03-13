@@ -21,8 +21,8 @@ function TextOutputComponent() {
           value={clipboardState}
           onChange={(e)=>setClipboardState(e.target.value)}
             name="postContent"
-            rows={20}
-            cols={100}
+            rows={10}
+            cols={50}
         />
         <button className='mt-2' onClick={handleCopy}>Copy</button>
         {/* </CopyToClipboard> */}
