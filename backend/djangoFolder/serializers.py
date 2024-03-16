@@ -6,3 +6,4 @@ class MP3FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = MP3File
         fields = '__all__'
+    # mp3_file = serializers.FileField()

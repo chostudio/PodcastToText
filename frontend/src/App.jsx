@@ -20,7 +20,7 @@ function App() {
     formData.append('mp3File', file);
 
     try {
-      await axios.post('http://your-backend-url/upload', formData, {
+      await axios.post('http://127.0.0.1:8000/upload/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -46,7 +46,7 @@ function App() {
             <input className='form-control inline w-40 m-2 mt-5' type='file' name='audio' onChange={handleFileChange} />
             <button type="submit" className='m-2 inline btn btn-primary'>Submit</button>
           </form>
-          < TextOutputComponent />
+          {/* < TextOutputComponent /> */}
 
           <br />
           <br />

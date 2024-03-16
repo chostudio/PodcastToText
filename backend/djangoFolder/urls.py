@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from .views import MP3FileUploadView
 
+# this says where to direct the request to the views file
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/upload/', MP3FileUploadView.as_view(), name='mp3_file_upload'),
+    path('upload/', MP3FileUploadView.as_view(), name='mp3_file_upload'),
+    # path('text/', text_response, name='text_response').
 ]
