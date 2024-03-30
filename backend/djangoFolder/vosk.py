@@ -7,6 +7,7 @@ from vosk import Model, KaldiRecognizer, SetLogLevel
 
 # figure out how to weave this into the django architecture
 
+
 def vosk_text_transcription(data):
     SAMPLE_RATE = 16000
 

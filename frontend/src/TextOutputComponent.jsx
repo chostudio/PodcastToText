@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function TextOutputComponent() {
-  const [clipboardState, setClipboardState] = useState(null);
+function TextOutputComponent({ text }) {
+  const [clipboardState, setClipboardState] = useState(text);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(clipboardState)
@@ -32,5 +33,10 @@ function TextOutputComponent() {
 
   );
 }
+
+// used to resolve the ESLint warning about missing prop validation for the 'text' prop for this component
+TextOutputComponent.propTypes = {
+  text: PropTypes.string.isRequired
+};
 
 export default TextOutputComponent;

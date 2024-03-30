@@ -31,6 +31,7 @@ function App() {
     }
   };
 
+  var text = ''; // this is the text displayed
   return (
     <div className='container'>
       <div className="row">
@@ -42,11 +43,13 @@ function App() {
           <p className='text-center my-3'>Upload an mp3 file below or paste in a YouTube or Spotify link.</p>
 
           {/* need error handling so that only mp3 files are allowed */}
+
           <form className='align-items-center' onSubmit={handleSubmit}>
             <input className='form-control inline w-40 m-2 mt-5' type='file' name='audio' onChange={handleFileChange} />
-            <button type="submit" className='m-2 inline btn btn-primary'>Submit</button>
+            <button type="submit">Submit</button>
           </form>
-          {/* < TextOutputComponent /> */}
+
+          < TextOutputComponent text={text}/>
 
           <br />
           <br />
