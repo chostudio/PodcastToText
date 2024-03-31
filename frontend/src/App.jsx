@@ -8,6 +8,7 @@ import axios from 'axios';
 function App() {
 
   const [file, setFile] = useState(null);
+  const [responseMessage, setResponseMessage] = useState('');
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -20,18 +21,19 @@ function App() {
     formData.append('mp3File', file);
 
     try {
-      await axios.post('http://127.0.0.1:8000/upload/', formData, {
+      const response = await axios.post('http://127.0.0.1:8000/upload/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
-        }
+        },
       });
+      setResponseMessage(response.data);
       console.log('File uploaded successfully');
     } catch (error) {
       console.error('Error uploading file:', error);
     }
   };
 
-  var text = ''; // this is the text displayed
+
   return (
     <div className='container'>
       <div className="row">
@@ -49,7 +51,7 @@ function App() {
             <button type="submit">Submit</button>
           </form>
 
-          < TextOutputComponent text={text}/>
+          < TextOutputComponent text={responseMessage} />
 
           <br />
           <br />

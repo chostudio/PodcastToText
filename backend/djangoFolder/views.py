@@ -9,7 +9,7 @@ from .vosk import vosk_text_transcription
 from django.http import HttpResponse
 
 class MP3FileUploadView(APIView):
-    text = ""
+    # text = ""
     # receiving the mp3 file from the frontend function
     # post request is when frontend sends data to backend
     # and can also recieve response text back from it
@@ -19,10 +19,11 @@ class MP3FileUploadView(APIView):
         if serializer.is_valid():
             # calls upon method to convert the mp3 into text string function
             # text = vosk_text_transcription(data=request.data) (changed?)
-            text = vosk_text_transcription(serializer)
+            mp3_file = serializer.validated_data['mp3_file']
+            text = vosk_text_transcription(mp3_file)
             # i think if this request is created then call the get func from frontend
             print(text)
-            return Response(text, status=status.HTTP_201_CREATED)
+            return Response({'message': text}, status=status.HTTP_201_CREATED)
             # return Response({'text': text}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
