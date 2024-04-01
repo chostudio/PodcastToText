@@ -41,6 +41,10 @@ ALLOWED_HOSTS = []
 # might want to change this later
 CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ALLOW_METHODS = (
+        'POST'
+    )
+    
 # Application definition
 
 INSTALLED_APPS = [

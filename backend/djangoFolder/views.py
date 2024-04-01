@@ -14,6 +14,7 @@ class MP3FileUploadView(APIView):
     # post request is when frontend sends data to backend
     # and can also recieve response text back from it
     def post(self, request, format=None):
+        print('hello')
         # first, checks that it's an mp3 file?
         serializer = MP3FileSerializer(data=request.data)
         if serializer.is_valid():

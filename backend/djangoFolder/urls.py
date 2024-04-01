@@ -20,7 +20,8 @@ from .views import MP3FileUploadView
 
 # this says where to direct the request to the views file
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('upload/', MP3FileUploadView.as_view(), name='mp3_file_upload'),
+    path('admin/', admin.site.urls),
+    
     # path('text/', text_response, name='text_response').
 ]

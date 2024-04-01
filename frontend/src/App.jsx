@@ -19,14 +19,14 @@ function App() {
 
     const formData = new FormData();
     formData.append('mp3File', file);
-
+    const url = 'http://127.0.0.1:8000/upload/';
     try {
-      const response = await axios.post('http://127.0.0.1:8000/upload/', formData, {
+      const response = await axios.post(url, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
       });
-      setResponseMessage(response.data);
+      setResponseMessage(response.data.message);
       console.log('File uploaded successfully');
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -47,7 +47,7 @@ function App() {
           {/* need error handling so that only mp3 files are allowed */}
 
           <form className='align-items-center' onSubmit={handleSubmit}>
-            <input className='form-control inline w-40 m-2 mt-5' type='file' name='audio' onChange={handleFileChange} />
+            <input className='form-control inline w-40 m-2 mt-5' type='file' name='audio' accept=".mp3" onChange={handleFileChange} />
             <button type="submit">Submit</button>
           </form>
 
