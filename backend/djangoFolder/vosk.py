@@ -8,30 +8,22 @@ from vosk import Model, KaldiRecognizer, SetLogLevel
 # figure out how to weave this into the django architecture
 
 
-def vosk_text_transcription(data):
+def vosk_text_transcription(mp3_data):
     SAMPLE_RATE = 16000
 
     SetLogLevel(0)
-
+    print('hello')
     model = Model(lang="en-us")
     rec = KaldiRecognizer(model, SAMPLE_RATE)
-
-    with subprocess.Popen(["ffmpeg", "-loglevel", "quiet", "-i",
-                                sys.argv[1],
-                                "-ar", str(SAMPLE_RATE) , "-ac", "1", "-f", "s16le", "-"],
-                                stdout=subprocess.PIPE) as process:
-
-        while True:
-            data = process.stdout.read(4000)
-            if len(data) == 0:
-                break
-            if rec.AcceptWaveform(data):
-                print(rec.Result())
-            else:
-                print(rec.PartialResult())
-
-        print(rec.FinalResult())
-        return rec.FinalResult()
+    print('hello2')
+    mp3_bytes = mp3_data.read()
+    with subprocess.Popen(["ffmpeg", "-loglevel", "quiet", "-i", "-", "-ar", str(SAMPLE_RATE), "-ac", "1", "-f", "s16le", "-"],
+                          stdin=subprocess.PIPE, stdout=subprocess.PIPE) as process:
+        pcm_data, _ = process.communicate(input=mp3_bytes)
+    print('hello3')
+    # Feed PCM data to the recognizer
+    rec.AcceptWaveform(pcm_data)
+    result = rec.FinalResult()
 
 
 

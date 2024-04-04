@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react'; // imported react, we'll see if this fixes the problem
 import TextOutputComponent from './TextOutputComponent.jsx';
 import Footer from './Footer.jsx';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -24,11 +24,20 @@ function App() {
       const response = await axios.post(url, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
-        },
+        } // removed a comma here
       });
       setResponseMessage(response.data.message);
       console.log('File uploaded successfully');
     } catch (error) {
+      // Handle errors
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error(error.response.data.message);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received from server');
+      }
       console.error('Error uploading file:', error);
     }
   };

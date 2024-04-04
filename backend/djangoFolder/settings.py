@@ -31,12 +31,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:5173',
-#     'http://127.0.0.1:8000',
-#     # Add more origins if needed
-#     # https://podcasttotext.com
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'http://127.0.0.1:8000',
+    # Add more origins if needed
+    # https://podcasttotext.com
+]
 
 # might want to change this later
 CORS_ORIGIN_ALLOW_ALL = True
