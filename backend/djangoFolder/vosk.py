@@ -7,6 +7,7 @@ from vosk import Model, KaldiRecognizer, SetLogLevel
 
 # figure out how to weave this into the django architecture
 
+#find out how to download ffmpeg for apple mac silicon. would then have to replace the ffmeg with the path to it.
 
 def vosk_text_transcription(mp3_data):
     SAMPLE_RATE = 16000
